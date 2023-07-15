@@ -1,0 +1,26 @@
+<div th:replace="~{navbar}"></div>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center mb-5">Result</h1>
+            <p  th:if="errorMessage" th:utext="${errorMessage}"></p>
+        </div>
+    </div>
+    <div th:switch="${books.size()}">
+
+        <div th:case="0">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-center mb-5 text-muted">No Books Found</h3>
+                </div>
+            </div>
+        </div>
+        <div th:case="*">
+            <h5 class="text-center mb-5 text-muted">Found <span th:text="${books.size()}"></span> books</h5>
+            <div th:replace="books-desplay.html :: display-book(${books})"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

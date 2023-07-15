@@ -1,0 +1,36 @@
+<div th:replace="~{../fragments/header}"></div>
+<body>
+<div class="container my-5 d-flex justify-content-center align-items-center">
+    <div class="mx-auto rounded border-dark p-3">
+        <h2 class="mb-5 text-center">Admin Page</h2>
+        <p class="shadow-md">Please Login to continue</p>
+        <div th:if="${param.error}" class="error-message alert alert-danger">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}" class="error-message alert alert-danger">
+            You have been logged out.
+        </div>
+        <div class="row justify-content-center">
+            <form action="../login" th:action="@{/admin/login}" method="post">
+                <div class="form-group">
+                    <label for="username" class="col-form-label">UserName</label>
+                    <input type="text" name="username" class="form-control shadow-lg" id="username"
+                           placeholder="username">
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-form-label">Password</label>
+                    <input type="password" name="password" class="form-control shadow-lg" id="password"
+                           placeholder="Password">
+                </div>
+                <div class="row d-flex mx-auto justify-content-center">
+                    <div class="col-md-6 mt-5">
+                        <input type="submit" class="btn btn-outline-primary btn-sm shadow-lg w-100" value="Login">
+                    </div>
+                </div>
+                <p><a href="" th:href="@{/static}">Back to home page</a></p>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

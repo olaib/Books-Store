@@ -1,0 +1,98 @@
+<div th:fragment="display-book(books)" class="row">
+    <div th:each="book : ${books}" class="col-md-3 mb-3">
+        <div class="card-sections hover-box shadow-lg border-0 border-0 p-3 rounded h-100">
+            <img th:src="${book.image}" alt="Book Image"
+                 class="card-img-top img-fluid border-6 border-6 shadow-sm"
+                 style="height: 300px;">
+            <div class="card-body justify-content-between">
+                <h5 class="card-title text-center text-capitalize mb-0" style="font-size: 1.2rem;"
+                    th:text="${book.title}"></h5>
+                <p>Author: <span th:text="${book.author}"></span></p>
+                <p>Price: $ <span th:text="${#numbers.formatDecimal(book.price, 0, 'COMMA', 2, 'POINT')}"></span></p>
+                <p>Discount <i class="fas fa-percentage"></i>: <span th:text="${book.discount}"></span></p>
+                <p>Stock: <i class="fas fa-box"></i> <span th:text="${book.quantity}"></span></p>
+                <p class="me-2">Price with discount:
+                    $
+                    <span th:text="${#numbers.formatDecimal(book.price - (book.price * (book.discount / 100)), 0, 'COMMA', 2, 'POINT')}"></span>
+                </p>
+            </div>
+            <div class="card-footer text-center">
+                <a class="btn btn-info" th:href="@{/addToCart/{id}(id=${book.id})}">
+                    <i class="fas fa-cart-plus"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:fragment="bookForm(book)">
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="title" class="col-form-label">title</label>
+            <input type="text" th:field="*{title}" class="form-control" id="title"
+                   placeholder="Title">
+            <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+                  class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="title" class="col-form-label">author</label>
+            <input type="text" th:field="*{author}" class="form-control" id="author"
+                   placeholder="author">
+            <span th:if="${#fields.hasErrors('author')}" th:errors="*{author}"
+                  class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="title" class="col-form-label">image url</label>
+            <input type="text" th:field="*{image}" class="form-control" id="image"
+                   placeholder="image">
+            <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}"
+                  class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="quantity" class="col-form-label">quantity</label>
+            <input type="text" th:field="*{quantity}" class="form-control" id="quantity"
+                   placeholder="quantity">
+            <span th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"
+                  class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="price" class="col-form-label">price</label>
+            <input type="text" th:field="*{price}" class="form-control" id="price" placeholder="price">
+            <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="discount" class="col-form-label">discount</label>
+            <input type="text" th:field="*{discount}" class="form-control" id="discount"
+                   placeholder="discount">
+            <span th:if="${#fields.hasErrors('discount')}" th:errors="*{discount}"
+                  class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mt-5">
+            <input type="submit" class="btn btn-primary" value="Update Book">
+        </div>
+    </div>
+</div>
+<div th:fragment="paymentForm(payment)">
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label for="itemsAmount" class="col-form-label">amount</label>
+            <input type="text" th:field="*{itemsAmount}" class="form-control" id="itemsAmount"
+                   placeholder="Items amount">
+            <span th:if="${#fields.hasErrors('itemsAmount')}" th:errors="*{itemsAmount}"
+                  class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="itemsAmount" class="col-form-label">totalPrice</label>
+            <input type="text" th:field="*{totalPrice}" class="form-control" id="totalPrice"
+                   placeholder="totalPrice">
+            <span th:if="${#fields.hasErrors('totalPrice')}" th:errors="*{totalPrice}"
+                  class="text-danger"></span>
+        </div>
+
+    <div class="row">
+        <div class="col-md-6 mt-5">
+            <input type="submit" class="btn btn-primary" value="add payment">
+        </div>
+    </div>
+</div>

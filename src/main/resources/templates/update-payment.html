@@ -1,0 +1,14 @@
+<div th:fragment="navbar">
+    <div th:replace="~{navbar.html}"></div>
+</div>
+<div class="container my-5">
+    <h2 class="mb-5">Update Book</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="#" th:action="@{/admin/update-payment/{id}(id=${payment.id})}" th:object="${payment}" method="post">
+                <div th:replace="books-desplay.html :: paymentForm(${payment})"></div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

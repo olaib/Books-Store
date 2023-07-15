@@ -1,0 +1,47 @@
+<div th:replace="~{navbar}"></div>
+<body>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-center mb-5">Book Store</h1>
+        </div>
+    </div>
+    <div th:switch="${discounted_books.size()}">
+        <div th:case="0">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-center mb-5 text-muted">No Discounts</h3>
+                </div>
+            </div>
+        </div>
+        <div th:case="*">
+            <div class="row">
+                <h3 class="text-center mb-5 text-muted">
+                    Top <span th:text="${discounted_books.size()}"></span>
+                    discounted books
+                </h3>
+                <div th:replace="books-desplay.html :: display-book(${discounted_books})"></div>
+            </div>
+        </div>
+    </div>
+    <div th:switch="${books.size()}">
+        <div th:case="0">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-center mb-5 text-muted">No Books Yet</h3>
+                </div>
+            </div>
+        </div>
+        <div th:case="*">
+            <div class="row">
+                <h3 class="text-center mb-5 text-muted">
+                    <span th:text="${books.size()}"></span>
+                    books in store
+                </h3>
+                <div th:replace="books-desplay.html :: display-book(${books})"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

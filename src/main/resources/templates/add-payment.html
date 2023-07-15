@@ -1,0 +1,15 @@
+<div th:fragment="navbar">
+    <div th:replace="~{navbar.html}"></div>
+</div>
+<div class="container my-5">
+    <h2 class="mb-5">Add new Payment</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="#" th:action="@{/admin/add-payment}" th:object="${payment}" method="post">
+                <div th:replace="books-desplay.html :: paymentForm(${payment})"></div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
