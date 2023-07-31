@@ -3,7 +3,6 @@
 
 ## Authors
 * Ola Ibrahim - olaib@edu.hac.ac.il
-* Abigail Untershatz - abigailun@edu.hac.ac.il
 <hr/>
 
 ![Screenshot 1](/src/main/resources/static/images/home.png)
